@@ -2,11 +2,11 @@ import sqlite3
 import random
 
 
-def add_new_member(name, email, number, photo, roles, interests):
+def add_new_member(name, email, number, photo, roles, interests, departament):
     _sqlite_connection = sqlite3.connect('sqlite_python.db')
     print("Соединение с базой данных установлено!")
-    sqlite_create_table_query = f'''INSERT INTO MEMBERS (id,name,email,number,photo,interests,roles)
-                                   VALUES ({random.randint(0, 10000000)},'{name}','{email}','{number}','{photo}','{interests}','{roles}');'''
+    sqlite_create_table_query = f'''INSERT INTO MEMBERS (id,name,email,number,photo,interests,roles,departament)
+                                   VALUES ({random.randint(0, 10000000)},'{name}','{email}','{number}','{photo}','{interests}','{roles}','{departament}');'''
 
     cursor = _sqlite_connection.cursor()
     print("База данных подключена к SQLite")
@@ -26,7 +26,8 @@ def create_db(_sqlite_connection):
                                     number text NOT NULL,
                                     photo text NOT NULL,
                                     interests text NOT NULL,
-                                    roles text NOT NULL);'''
+                                    roles text NOT NULL,
+                                    departament text NOT NULL);'''
 
     cursor = _sqlite_connection.cursor()
     print("База данных подключена к SQLite")
@@ -46,6 +47,7 @@ def string_to_map(data):
             "photo": user[4],
             "interests": user[5],
             "roles": user[6],
+            "departament": user[7]
         })
 
     return new_data
@@ -64,7 +66,7 @@ def get_all():
     cursor.close()
     _sqlite_connection.close()
     print("Соединение с SQLite закрыто")
-    return string_to_map(data)
+    return data
 
 
 def find_same_users(key):
@@ -77,7 +79,7 @@ def find_same_users(key):
                 same_users.append(user)
                 break
 
-    return string_to_map(same_users)
+    return same_users
 
 
 def delete_all():

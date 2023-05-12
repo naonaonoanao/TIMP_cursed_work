@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-from db import get_all, find_same_users, add_new_member, delete_all
+from db import get_all, find_same_users, add_new_member, delete_all, string_to_map
 
 app = Flask(__name__)
 CORS(app)
@@ -10,7 +10,7 @@ CORS(app)
 def get_all_users():
     data = get_all()
     return {
-        "data": data,
+        "data": string_to_map(data),
         "count": len(data)
     }
 
@@ -20,7 +20,7 @@ def find_users():
     data = find_same_users(request.args.get("key"))
 
     return {
-        "data": data,
+        "data": string_to_map(data),
         "count": len(data)
     }
 
@@ -33,7 +33,8 @@ def add_new_user():
         request.args.get("number"),
         request.args.get("photo"),
         request.args.get("roles"),
-        request.args.get("interests")
+        request.args.get("interests"),
+        request.args.get("departament")
     )
 
     return "OK"
