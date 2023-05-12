@@ -30,4 +30,8 @@ $(document).ready(function () {
         })
     }
     $($(".day")[22]).addClass("deadline");
+    $(".day").click(function (e) { 
+        console.log(e)
+        
+    });
 });
