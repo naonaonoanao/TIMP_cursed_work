@@ -10,17 +10,86 @@ $(document).ready(function () {
     getNames();
     getRoles();
     getInterests();
+    $("#cross_info").click(function () {
+        $("#person_info").css({
+            display: "none"
+        });
+    });
+    $("#toMyCab").click(function () {
+        window.location.href = "index.html"
+    });
     $("#make_search_btn").click(async function () {
         requestIng = "http://127.0.0.1:5000/find_users_by_name?key=" + generateSearchRequest("names");
+        console.log(requestIng);
         let request = await fetch(requestIng)
         let responseNames = await request.json();
-        console.log(requestIng)
-        console.log(responseNames)
+        let names_set = toSet(responseNames.data, responseNames.count);
+
         requestIng = "http://127.0.0.1:5000/find_users_by_roles?key=" + generateSearchRequest("roles");
         request = await fetch(requestIng)
         let responseRoles = await request.json();
-        console.log(requestIng)
-        console.log(responseRoles)
+        let roles_set = toSet(responseRoles.data, responseRoles.count);
+
+        requestIng = "http://127.0.0.1:5000/find_users_by_interests?key=" + generateSearchRequest("interests");
+        request = await fetch(requestIng)
+        let responseInterests = await request.json();
+        let interests_set = toSet(responseInterests.data, responseInterests.count);
+
+        let all_resp = [names_set, roles_set, interests_set]
+        interest_length = 100000000
+        interestind_id = 0
+        for (let i = 0; i < all_resp.length; i++) {
+            if (interest_length > all_resp[i].length){
+                interestind_id = i
+                interest_length = all_resp[i].length
+            }
+        }
+        let finish_answer = new Set();
+        for (let i = 0; i < all_resp[interestind_id].length; i++) {
+            object_f = all_resp[interestind_id][i]
+            flag = false
+            for (let j = 0; j < all_resp.length; j++) {
+                if (j != interestind_id){
+                    for (let k = 0; k < all_resp[j].length; k++) {
+                        obj_c = all_resp[j][k]
+                        if (checkPeoples(obj_c, object_f)){
+                            flag = true
+                            break
+                        }
+                    }
+                }
+                
+            }
+            if (flag){
+                finish_answer.add(object_f)
+            }
+        }
+
+        finish_answer = Array.from(finish_answer)
+        last_response = finish_answer
+
+        $("#finded_fields").empty();
+
+        for (let i = 0; i < finish_answer.length; i++) {
+            new_person = "<div class='person_block finded' id='"+i+"'></div>"
+            new_photo = "<div class='finded_photo finded'></div>"
+            $("#finded_fields").append(new_person);
+            last_person = $(".person_block")[$(".person_block").length-1]
+            $(last_person).append(new_photo)
+            $($(".finded_photo")[$(".finded_photo").length-1]).css({
+                "background-image": "url('" + finish_answer[i].photo + "')"
+            });
+            new_find_block = "<div class='finded_block finded'></div>"
+            $(last_person).append(new_find_block);
+            new_el = $(".finded_block")[$(".finded_block").length-1];
+            createText(finish_answer[i], new_el);
+            // $(new_el).text(finish_answer[i].name);
+        }
+
+        console.log(finish_answer)
+    });
+    $("#fast_search_button").click(function () {
+        search_activated()
     });
 });
 
@@ -100,20 +169,100 @@ document.addEventListener("click", function (e) {
             searching.add(search_parameter)
         }
     }
+    else if($(e.target).hasClass("finded")){
+        elem = e.target
+        console.log($(elem))
+        while ($(elem).hasClass("person_block") == false){
+            elem = $(elem)[0].parentNode
+        }
+        index = parseInt($(elem).attr("id"));
+        person = last_response[index]
+        $("#prof_photo_info").css({
+            "background-image": "url("+person.photo+")"
+        });
+        console.log(person)
+        $("#naming_info").text(person.name)
+        $("#email_info").text(person.email)
+        $("#phoneNumber_info").text(person.number)
+        $("#roles_info").text(person.roles)
+        $("#departament_info").text(person.departament)
+        $("#interests_info").text(person.interests)
+        $("#person_info").css({
+            display: "block"
+        });
+    }
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Enter"){
+        console.log("e")
+        if (document.getElementById("fast_search") == document.activeElement){
+            search_activated();
+        }
+    }
 });
 
 function generateSearchRequest(type = "") {
     new_req = ""
-    console.log(searching)
-    for (let i = 0; i < searching.length; i++) {
-        console.log(searching[i])
-        if (searching[i].split("_")[1] == type){
-            if (i < searching.length-1){
-                new_req += (searching[i] + ",")
+    srch_arr = Array.from(searching)
+    for (let i = 0; i < srch_arr.length; i++) {
+        if (srch_arr[i].split("_")[1] == type){
+            if (i < srch_arr.length-1){
+                new_req += (srch_arr[i].split("_")[0] + ",")
             }else{
-                new_req += searching[i]
+                new_req += srch_arr[i].split("_")[0]
             }
         }
     }
     return new_req
+}
+
+function toSet(object, size) {
+    mySet = new Set();
+    for (let i = 0; i < size; i++) {
+        mySet.add(object[i])
+    }
+    return Array.from(mySet)
+}
+
+function checkPeoples(obj1, obj2) {
+    flag = true
+    if (obj1.name != obj2.name) {
+        flag = false
+    }
+    if (obj1.email != obj2.email) {
+        flag = false
+    }
+    if (obj1.departament != obj2.departament) {
+        flag = false
+    }
+    if (obj1.interests != obj2.interests) {
+        flag = false
+    }
+    if (obj1.number != obj2.number) {
+        flag = false
+    }
+    return flag
+}
+
+function createText(person, element) {
+    let name_text = "<div class='text_block finded'>" + person.name + "</div>"
+    let roles_text = "<div class='text_block finded'>" + person.roles + "</div>"
+    let email_text = "<div class='text_block finded'>" + person.email + "</div>"
+
+    $(element).append(name_text)
+    $(element).append(roles_text)
+    $(element).append(email_text)
+}
+
+function search_activated() {
+    new_tag_value = $("#fast_search").val();
+    $("#fast_search").val("");
+    newtag = "<div class='search_tag' id='names'>" + new_tag_value + "</div>"
+    search_parameter = new_tag_value+"_names"
+    if (searching.has(search_parameter) == false){
+        $("#searching_field").append(newtag);
+        searching.add(search_parameter)
+    }
+    console.log(search_parameter)
 }

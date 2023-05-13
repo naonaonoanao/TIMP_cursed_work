@@ -28,6 +28,12 @@ $(document).ready(function () {
         lastOne = $(".day")[$(".day").length-1]
     }
     $($(".day")[22]).addClass("deadline");
+    $("#toExpandedSearch").click(function () {
+        window.location.href = "expandedSearchPage.html"
+    });
+    $("#toMyCab").click(function () {
+        window.location.href = "index.html"
+    });
     $(".day").click(function (e) { 
         id = parseInt($(this).attr("id").split("_")[1])
         //взять из бд
@@ -54,17 +60,7 @@ $(document).ready(function () {
         }
     });
     $("#fast_search_button").click(async function (){
-        user_input = $("#fast_search").val()
-        requestIng = "http://127.0.0.1:5000/find_users?key=" + user_input
-        let request = await fetch(requestIng)
-        let response = await request.json();
-        console.log(response)
-        last_response = response
-        $("#dropdown_list").empty()
-        for (let i = 0; i < response.count; i++) {
-            new_element = "<div class='dropdown_field' id='profile_"+i+"'>" + response.data[i].name + "</div>"
-            $("#dropdown_list").append(new_element);
-        }
+        search_activated();
     });
     $("#cross_info").click(function () {
         $("#person_info").css({
@@ -107,3 +103,26 @@ document.addEventListener("mousemove", function (e) {
         })
     }
 });
+
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Enter"){
+        console.log("e")
+        if (document.getElementById("fast_search") == document.activeElement){
+            search_activated();
+        }
+    }
+});
+
+async function search_activated() {
+    user_input = $("#fast_search").val()
+    requestIng = "http://127.0.0.1:5000/find_users?key=" + user_input
+    let request = await fetch(requestIng)
+    let response = await request.json();
+    console.log(response)
+    last_response = response
+    $("#dropdown_list").empty()
+    for (let i = 0; i < response.count; i++) {
+        new_element = "<div class='dropdown_field' id='profile_"+i+"'>" + response.data[i].name + "</div>"
+        $("#dropdown_list").append(new_element);
+    }
+}
