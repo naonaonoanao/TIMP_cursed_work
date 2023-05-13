@@ -37,6 +37,10 @@ def create_db(_sqlite_connection):
     cursor.close()
 
 
+def parse_data(data):
+    return [user.strip() for user in data.split(',')]
+
+
 def string_to_map(data):
     new_data = []
     for user in data:
@@ -78,6 +82,82 @@ def find_same_users(key):
             if key in str(field):
                 same_users.append(user)
                 break
+    return same_users
+
+
+def find_users_by_name(key):
+    data = get_all()
+    same_users = []
+
+    for user in data:
+        if key in user[1]:
+            same_users.append(user)
+
+    return same_users
+
+
+def find_users_by_email(key):
+    data = get_all()
+    same_users = []
+
+    for user in data:
+        if key in user[2]:
+            same_users.append(user)
+
+    return same_users
+
+
+def find_users_by_number(key):
+    data = get_all()
+    same_users = []
+
+    for user in data:
+        if key in user[3]:
+            same_users.append(user)
+
+    return same_users
+
+
+def find_users_by_interests(key):
+    data = get_all()
+    same_users = []
+    interests = parse_data(key)
+
+    for user in data:
+        valid = True
+        for interest in interests:
+            if interest not in user[5]:
+                valid = False
+                break
+        if valid:
+            same_users.append(user)
+
+    return same_users
+
+
+def find_users_by_roles(key):
+    data = get_all()
+    same_users = []
+    roles = parse_data(key)
+
+    for user in data:
+        valid = True
+        for role in roles:
+            if role not in user[6]:
+                valid = False
+                break
+        if valid:
+            same_users.append(user)
+    return same_users
+
+
+def find_users_by_departament(key):
+    data = get_all()
+    same_users = []
+
+    for user in data:
+        if key in user[7]:
+            same_users.append(user)
 
     return same_users
 
@@ -100,11 +180,11 @@ if __name__ == "__main__":
     try:
         sqlite_connection = sqlite3.connect('sqlite_python.db')
         create_db(sqlite_connection)
-        # add_new_member(sqlite_connection, "Hagrid Amoralov", "222@d.c", "8-800-555-35-35", "url to photo", "Dev","Dota 2, Poland")
+        # add_new_member(sqlite_connection, "Hagrid Lol", "222@d.c", "8-800-555-35-35", "url to photo", "Dev","Dota 2, Poland")
         # get_all()
     except sqlite3.Error as error:
         print("Ошибка при подключении к sqlite", error)
     finally:
-        if (sqlite_connection):
+        if sqlite_connection:
             sqlite_connection.close()
             print("Соединение с SQLite закрыто")
