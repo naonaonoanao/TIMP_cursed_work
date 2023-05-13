@@ -1,6 +1,5 @@
 roles=["blank", "backend", "frontend", "dota2", "cs2", "css", "mobile"]
 
-
 $(document).ready(function () {
     prof_element  = $("#profile")
     prof_width = parseFloat(prof_element.width())
@@ -58,6 +57,10 @@ $(document).ready(function () {
         let response = await fetch(request)
         let data = await response.json();
         console.log(data)
+        $("#dropdown_list").empty()
+        for (let i = 0; i < data.count; i++) {
+            new_element = "<div class='dropdown_field'>" + data.data.name + "</div>"
+        }
     });
 
 });
