@@ -1,4 +1,4 @@
-![Logo]([https://media.tproger.ru/uploads/2016/10/reactmini.png](https://i.imgur.com/tjjQd4p.jpeg))
+![Logo](https://i.imgur.com/tjjQd4p.jpeg)
 # \</blank> project
 
 ## Запуск backend
