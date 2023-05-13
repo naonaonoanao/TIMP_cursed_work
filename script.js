@@ -25,7 +25,6 @@ $(document).ready(function () {
     for (let i = 0; i < 30; i++) {
         new_day = "<div class='day' id='day_"+(i+1)+"'>"+(i+1)+"</div>"
         $("#calendar").append(new_day);
-        lastOne = $(".day")[$(".day").length-1]
     }
     $($(".day")[22]).addClass("deadline");
     $("#toExpandedSearch").click(function () {
