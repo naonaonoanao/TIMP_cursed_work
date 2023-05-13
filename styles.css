@@ -93,15 +93,20 @@
     position: absolute;
     right: 1vw;
     top: 1vh;
-    height: 37vh;
+    height: 33.6vh;
     width: 54.5vw;
     text-align: center;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#calendar::-webkit-scrollbar{
+    display: none;
 }
 #tasks{
     position: absolute;
     right: 1vw;
-    top: 44vh;
-    height: 37vh;
+    bottom: 2vh;
+    height: 39.5vh;
     width: 54.5vw;
 }
 
@@ -188,12 +193,13 @@
 }
 .day{
     display: inline-block;
-    width: 9%;
+    width: 10vh;
+    height: 6vh;
     margin-left: 1%;
     background-color: rgb(60, 60, 60);
     color: rgb(247,237,189);
     font-size: 0.7em;
-    padding-top: 3.2%;
+    padding-top: 4vh;
     margin-bottom: 1%;
     border-radius: 10vh;
     transition: 0.6s;

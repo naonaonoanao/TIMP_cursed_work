@@ -25,9 +25,6 @@ $(document).ready(function () {
         new_day = "<div class='day' id='day_"+(i+1)+"'>"+(i+1)+"</div>"
         $("#calendar").append(new_day);
         lastOne = $(".day")[$(".day").length-1]
-        $(lastOne).css({
-            height: $(lastOne).width()-parseFloat($(lastOne).css("padding-top"))
-        })
     }
     $($(".day")[22]).addClass("deadline");
     $(".day").click(function (e) { 
