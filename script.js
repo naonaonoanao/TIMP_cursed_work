@@ -2,9 +2,6 @@ $(document).ready(function () {
     prof_element  = $("#profile")
     prof_width = parseFloat(prof_element.width())
     prof_height = parseFloat(prof_element.height())
-    $("#avatar").css({
-        height: $("#avatar").width()
-    })
     $("#nickname").css({
         padding: 0.03*prof_width,
     })
@@ -22,7 +19,7 @@ $(document).ready(function () {
     })
 
     for (let i = 0; i < 30; i++) {
-        new_day = "<div class='day'>"+(i+1)+"</div>"
+        new_day = "<div class='day' id='day_"+(i+1)+"'>"+(i+1)+"</div>"
         $("#calendar").append(new_day);
         lastOne = $(".day")[$(".day").length-1]
         $(lastOne).css({
@@ -31,7 +28,24 @@ $(document).ready(function () {
     }
     $($(".day")[22]).addClass("deadline");
     $(".day").click(function (e) { 
-        console.log(e)
+        id = parseInt($(this).attr("id").split("_")[1])
+        //взять из бд
+        $("#task_day").text(id);
+        $("#task_name").text("имя таска на день: "+id)
+        $("#task_description").text("нереальное описание таска на день: "+id)
+        deadline = id+4
+        if (id <= 23){
+            deadline = 23
+        }
+        if (deadline > 30){
+            deadline = 30
+        }
+        $("#task_deadline").text(deadline)
+        if ($(this).hasClass("deadline")){
+            $("#task_faster").text("Это последний день выполнения!")
+        }else{
+            $("#task_faster").text("")
+        }
         
     });
 });
