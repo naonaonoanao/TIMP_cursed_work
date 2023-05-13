@@ -1,5 +1,6 @@
 import sqlite3
 import random
+from faker import Faker
 
 
 def add_new_member(name, email, number, photo, roles, interests, departament):
@@ -176,12 +177,24 @@ def delete_all():
     print("Соединение с SQLite закрыто")
 
 
+def generate_random_users(count):
+    fake = Faker()
+    for i in range(count):
+        name = fake.name()
+        email = fake.email()
+        number = fake.phone_number()
+        photo = fake.image_url()
+        roles = fake.job()
+        interests = ", ".join(fake.words(nb=3))
+        departament = fake.company()
+        add_new_member(name, email, number, photo, roles, interests, departament)
+
+
 if __name__ == "__main__":
     try:
         sqlite_connection = sqlite3.connect('sqlite_python.db')
         create_db(sqlite_connection)
-        # add_new_member(sqlite_connection, "Hagrid Lol", "222@d.c", "8-800-555-35-35", "url to photo", "Dev","Dota 2, Poland")
-        # get_all()
+        generate_random_users(50)
     except sqlite3.Error as error:
         print("Ошибка при подключении к sqlite", error)
     finally:
