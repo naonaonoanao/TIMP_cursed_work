@@ -3,3 +3,4 @@
 /workspace.xml
 /.idea/
 /server/__pycache__/
+*.db

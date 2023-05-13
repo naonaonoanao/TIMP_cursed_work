@@ -193,7 +193,7 @@ def generate_random_users(count):
 if __name__ == "__main__":
     try:
         sqlite_connection = sqlite3.connect('sqlite_python.db')
-        create_db(sqlite_connection)
+        # create_db(sqlite_connection)
         generate_random_users(15000)
     except sqlite3.Error as error:
         print("Ошибка при подключении к sqlite", error)
