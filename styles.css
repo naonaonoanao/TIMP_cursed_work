@@ -120,6 +120,9 @@
     height: 36vh;
     border-radius: 100%;
     background-color: burlywood;
+    background-image: url("./logos/default_avatar.png");
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain;
 }
 #nickname{
     position: absolute;
@@ -258,4 +261,69 @@
     font-size: 4vh;
     text-align: right;
     color: rgb(255,51,95);
+}
+#form_search{
+    width: 30vw;
+    height: 7vh;
+    border-radius: 1vh;
+    position: absolute;
+    right: 5vh;
+    top: 1vh;
+    background-color: rgb(30, 30, 30);
+    color: rgb(247,237,189);
+}
+#fast_search{
+    width: 25.5vw;
+    height: 4vh;
+    position: absolute;
+    top: 1.2vh;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+    font-size: 4vh;
+    border: 0;
+    color: rgb(247,237,189);
+}
+#fast_search:active{
+    border: none;
+    border-width: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline:0;
+}
+#fast_search:focus{
+    border: none;
+    border-width: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline:0;
+}
+#fast_search_button{
+    width: 9vh;
+    height: 100%;
+    background-color: rgb(90, 90, 90);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 1vh;
+    transition: 0.6s;
+}
+#fast_search_button:hover{
+    width: 9vh;
+    height: 100%;
+    background-color: rgb(150, 150, 150);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 1vh;
+    transition: 0.4s;
+}
+#fast_search_button:active{
+    width: 9vh;
+    height: 100%;
+    background-color: rgb(255,51,95);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 1vh;
+    transition: 0.05s;
 }

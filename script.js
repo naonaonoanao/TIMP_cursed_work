@@ -1,3 +1,6 @@
+roles=["blank", "backend", "frontend", "dota2", "cs2", "css", "mobile"]
+
+
 $(document).ready(function () {
     prof_element  = $("#profile")
     prof_width = parseFloat(prof_element.width())
@@ -41,11 +44,20 @@ $(document).ready(function () {
             deadline = 30
         }
         $("#task_deadline").text(deadline)
+        $("#task_faster").text("")
+        text_last = "Это последний день выполнения!"
         if ($(this).hasClass("deadline")){
-            $("#task_faster").text("Это последний день выполнения!")
-        }else{
-            $("#task_faster").text("")
+            for (let k = 0; k < text_last.length; k++) {
+                setTimeout(() => {
+                    $("#task_faster").text($("#task_faster").text()+text_last[k])
+                }, 15*k);
+                
+            }
         }
-        
     });
+    $("#fast_search_button").click(function (){
+        user_input = $("#fast_search").val()
+        response = "http://127.0.0.1:5000/find_users?key=" + user_input
+    });
+
 });
