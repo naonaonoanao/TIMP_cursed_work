@@ -1,4 +1,4 @@
-roles=["blank", "backend", "frontend", "dota2", "cs2", "css", "mobile"]
+roles=["manager", "ingeneer", "game", "senior", "inspector", "designer", "chief", "dancer", "director"]
 
 last_response = null
 
