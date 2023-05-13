@@ -1,10 +1,10 @@
+roles=["blank", "backend", "frontend", "dota2", "cs2", "css", "mobile"]
+
+
 $(document).ready(function () {
     prof_element  = $("#profile")
     prof_width = parseFloat(prof_element.width())
     prof_height = parseFloat(prof_element.height())
-    $("#avatar").css({
-        height: $("#avatar").width()
-    })
     $("#nickname").css({
         padding: 0.03*prof_width,
     })
@@ -22,7 +22,7 @@ $(document).ready(function () {
     })
 
     for (let i = 0; i < 30; i++) {
-        new_day = "<div class='day'>"+(i+1)+"</div>"
+        new_day = "<div class='day' id='day_"+(i+1)+"'>"+(i+1)+"</div>"
         $("#calendar").append(new_day);
         lastOne = $(".day")[$(".day").length-1]
         $(lastOne).css({
@@ -30,4 +30,34 @@ $(document).ready(function () {
         })
     }
     $($(".day")[22]).addClass("deadline");
+    $(".day").click(function (e) { 
+        id = parseInt($(this).attr("id").split("_")[1])
+        //взять из бд
+        $("#task_day").text(id);
+        $("#task_name").text("имя таска на день: "+id)
+        $("#task_description").text("нереальное описание таска на день: "+id)
+        deadline = id+4
+        if (id <= 23){
+            deadline = 23
+        }
+        if (deadline > 30){
+            deadline = 30
+        }
+        $("#task_deadline").text(deadline)
+        $("#task_faster").text("")
+        text_last = "Это последний день выполнения!"
+        if ($(this).hasClass("deadline")){
+            for (let k = 0; k < text_last.length; k++) {
+                setTimeout(() => {
+                    $("#task_faster").text($("#task_faster").text()+text_last[k])
+                }, 15*k);
+                
+            }
+        }
+    });
+    $("#fast_search_button").click(function (){
+        user_input = $("#fast_search").val()
+        response = "http://127.0.0.1:5000/find_users?key=" + user_input
+    });
+
 });
