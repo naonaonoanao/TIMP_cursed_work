@@ -55,9 +55,12 @@ $(document).ready(function () {
             }
         }
     });
-    $("#fast_search_button").click(function (){
+    $("#fast_search_button").click(async function (){
         user_input = $("#fast_search").val()
-        response = "http://127.0.0.1:5000/find_users?key=" + user_input
+        request = "http://127.0.0.1:5000/find_users?key=" + user_input
+        let response = await fetch(request)
+        let data = await response.json();
+        console.log(data)
     });
 
 });
