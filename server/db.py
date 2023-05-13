@@ -80,7 +80,7 @@ def find_same_users(key):
 
     for user in data:
         for field in user:
-            if key in str(field):
+            if key.lower() in str(field).lower():
                 same_users.append(user)
                 break
     return same_users
@@ -91,7 +91,7 @@ def find_users_by_name(key):
     same_users = []
 
     for user in data:
-        if key in user[1]:
+        if key.lower() in user[1].lower():
             same_users.append(user)
 
     return same_users
@@ -102,7 +102,7 @@ def find_users_by_email(key):
     same_users = []
 
     for user in data:
-        if key in user[2]:
+        if key.lower() in user[2].lower():
             same_users.append(user)
 
     return same_users
@@ -127,7 +127,7 @@ def find_users_by_interests(key):
     for user in data:
         valid = True
         for interest in interests:
-            if interest not in user[5]:
+            if interest.lower() not in user[5].lower():
                 valid = False
                 break
         if valid:
@@ -144,7 +144,7 @@ def find_users_by_roles(key):
     for user in data:
         valid = True
         for role in roles:
-            if role not in user[6]:
+            if role.lower() not in user[6].lower():
                 valid = False
                 break
         if valid:
@@ -157,7 +157,7 @@ def find_users_by_departament(key):
     same_users = []
 
     for user in data:
-        if key in user[7]:
+        if key.lower() in user[7].lower():
             same_users.append(user)
 
     return same_users
