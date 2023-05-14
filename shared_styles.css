@@ -197,7 +197,7 @@
     position: absolute;
     left: 2vw;
     top: 61vh;
-    width: 68vw;
+    width: 58vw;
     height: 14vh;
     background-color: rgb(60, 60, 60);
     padding-top: 2vh;
@@ -205,4 +205,37 @@
 }
 #interests_info::-webkit-scrollbar{
     display: none;
+}
+
+#goRocket_info{
+    position: absolute;
+    bottom: 3vh;
+    left: 63vw;
+    width: 9vw;
+    height: 9vw;
+    border-radius: 20vh;
+    background-color: rgb(30, 30, 30);
+    text-align: center;
+    transition: 0.5s;
+    background-image: url("./logos/rocketChat_logo.png");
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(60, 60, 60);
+}
+#goRocket_info:hover{
+    background-color: rgb(60, 60, 60);
+    transition: 0.2s;
+}
+#goRocket_info:active{
+    background-color: rgb(30, 30, 30);
+    transition: 0.05s;
+}
+
+.unselectable{
+    -webkit-user-select: none;        
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
