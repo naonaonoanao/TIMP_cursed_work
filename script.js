@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
 });
 
-document.addEventListener("click", function(e) {
+document.addEventListener("click", async function(e) {
     if ($(e.target).hasClass("dropdown_field")) {
         id = parseInt($(e.target).attr("id").split("_")[1])
         person = last_response.data[id]
@@ -85,8 +85,12 @@ document.addEventListener("click", function(e) {
         deadline = parseInt($(day).attr("id").split("_")[2]);
         //взять из бд
         $("#task_day").text(normalize_data(id));
-        $("#task_name").text("имя таска на день: " + id)
-        $("#task_description").text("нереальное описание таска на день: " + id)
+        $("#task_name").text("имя таска на день: " + id);
+        requestIng = "http://127.0.0.1:5000/generate_text";
+        let request = await fetch(requestIng);
+        let response = await request.json();
+        task_text = response.text;
+        $("#task_description").text(task_text);
         $("#task_deadline").text(deadline);
         $("#task_faster").text("");
         text_last = "Это последний день выполнения!";
