@@ -54,6 +54,9 @@ $(document).ready(function () {
         }
         days_view();
     });
+    $("#logo_main").click(function () {
+        window.location.href = "https://samokat.tech/"
+    });
 });
 
 document.addEventListener("click", function (e) {

@@ -95,6 +95,9 @@ $(document).ready(function () {
     $("#fast_search_button").click(function () {
         search_activated();
     });
+    $("#logo_main").click(function () {
+        window.location.href = "https://samokat.tech/"
+    });
 });
 
 function addToRoles(par) {
