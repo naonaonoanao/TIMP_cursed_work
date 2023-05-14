@@ -1,6 +1,7 @@
 interests = new Set()
 names = new Set()
 roles = new Set()
+departaments = new Set();
 
 searching = new Set()
 
@@ -10,6 +11,7 @@ $(document).ready(function () {
     getNames();
     getRoles();
     getInterests();
+    getDepartaments();
     $("#cross_info").click(function () {
         $("#person_info").css({
             display: "none"
@@ -35,7 +37,12 @@ $(document).ready(function () {
         let responseInterests = await request.json();
         let interests_set = toSet(responseInterests.data, responseInterests.count);
 
-        let all_resp = [names_set, roles_set, interests_set]
+        requestIng = "http://127.0.0.1:5000/find_users_by_departament?key=" + generateSearchRequest("departament");
+        request = await fetch(requestIng)
+        let responseDepartaments = await request.json();
+        let departaments_set = toSet(responseDepartaments.data, responseDepartaments.count);
+
+        let all_resp = [names_set, roles_set, interests_set, departaments_set]
         interest_length = 100000000
         interestind_id = 0
         for (let i = 0; i < all_resp.length; i++) {
@@ -119,7 +126,7 @@ async function getRoles() {
     let request = await fetch(requestIng)
     let response = await request.json();
     for (let i = 0; i < response.count; i++) {
-        newCheckPar = response.data[i].roles.split(" ")
+        newCheckPar = response.data[i].roles.split(", ")
         for (let n = 0; n < newCheckPar.length; n++) {
             if (roles.has(newCheckPar[n].toLowerCase()) == false){
                 roles.add(newCheckPar[n].toLowerCase());
@@ -141,6 +148,22 @@ async function getInterests() {
                 interests.add(newCheckPar[n].toLowerCase());
                 newCheck = "<div class='check'>" + newCheckPar[n].toLowerCase() + "</div>"
                 $("#interests_check").append(newCheck);
+            }
+        }
+    }
+}
+
+async function getDepartaments() {
+    requestIng = "http://127.0.0.1:5000/find_users?key="
+    let request = await fetch(requestIng)
+    let response = await request.json();
+    for (let i = 0; i < response.count; i++) {
+        newCheckPar = response.data[i].departament.split(", ")
+        for (let n = 0; n < newCheckPar.length; n++) {
+            if (departament.has(newCheckPar[n].toLowerCase()) == false){
+                departament.add(newCheckPar[n].toLowerCase());
+                newCheck = "<div class='check'>" + newCheckPar[n].toLowerCase() + "</div>"
+                $("#departament_check").append(newCheck);
             }
         }
     }

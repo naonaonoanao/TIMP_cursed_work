@@ -1,5 +1,6 @@
-roles=["blank", "backend", "frontend", "dota2", "cs2", "css", "mobile"]
-
+current_month = 5 //брать из бд
+months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 last_response = null
 
 $(document).ready(function () {
@@ -24,7 +25,7 @@ $(document).ready(function () {
 
     for (let i = 0; i < 30; i++) {
         new_day = "<div class='day' id='day_"+(i+1)+"'>"+(i+1)+"</div>"
-        $("#calendar").append(new_day);
+        $("#cal_days").append(new_day);
     }
     $($(".day")[22]).addClass("deadline");
     $("#toExpandedSearch").click(function () {
@@ -33,31 +34,6 @@ $(document).ready(function () {
     $("#toMyCab").click(function () {
         window.location.href = "index.html"
     });
-    $(".day").click(function (e) { 
-        id = parseInt($(this).attr("id").split("_")[1])
-        //взять из бд
-        $("#task_day").text(id);
-        $("#task_name").text("имя таска на день: "+id)
-        $("#task_description").text("нереальное описание таска на день: "+id)
-        deadline = id+4
-        if (id <= 23){
-            deadline = 23
-        }
-        if (deadline > 30){
-            deadline = 30
-        }
-        $("#task_deadline").text(deadline)
-        $("#task_faster").text("")
-        text_last = "Это последний день выполнения!"
-        if ($(this).hasClass("deadline")){
-            for (let k = 0; k < text_last.length; k++) {
-                setTimeout(() => {
-                    $("#task_faster").text($("#task_faster").text()+text_last[k])
-                }, 15*k);
-                
-            }
-        }
-    });
     $("#fast_search_button").click(async function (){
         search_activated();
     });
@@ -65,6 +41,40 @@ $(document).ready(function () {
         $("#person_info").css({
             display: "none"
         });
+    });
+    $("#next_month").click(function () {
+        $("#cal_days").empty();
+        current_month += 1
+        if (current_month >= 12) {
+            current_month = 0
+        }
+        $("#month_name").text(months[current_month])
+        days_info = generate_day_info(month_days[current_month])//надо брать из бд
+        for (let i = 0; i<days_info.length; i++){
+            new_day = "<div class='day' id='day_"+days_info[i].number+"'>"+days_info[i].number+"</div>"
+            
+            $("#cal_days").append(new_day);
+            if (days_info[i].deadline == days_info[i].number){
+                $($(".day")[$(".day").length-1]).addClass("deadline");
+            }
+        }
+    });
+    $("#previous_month").click(function () {
+        $("#cal_days").empty();
+        current_month -= 1
+        if (current_month < 0) {
+            current_month = 11
+        }
+        $("#month_name").text(months[current_month])
+        days_info = generate_day_info(month_days[current_month])//надо брать из бд
+        for (let i = 0; i<days_info.length; i++){
+            new_day = "<div class='day' id='day_"+days_info[i].number+"'>"+days_info[i].number+"</div>"
+            
+            $("#cal_days").append(new_day);
+            if (days_info[i].deadline == days_info[i].number){
+                $($(".day")[$(".day").length-1]).addClass("deadline");
+            }
+        }
     });
 });
 
@@ -86,6 +96,32 @@ document.addEventListener("click", function (e) {
         $("#person_info").css({
             display: "block"
         });
+    }
+    else if ($(e.target).hasClass("day")){
+        day = e.target
+        id = parseInt($(day).attr("id").split("_")[1])
+        //взять из бд
+        $("#task_day").text(id);
+        $("#task_name").text("имя таска на день: "+id)
+        $("#task_description").text("нереальное описание таска на день: "+id)
+        deadline = id+4
+        if (id <= 23){
+            deadline = 23
+        }
+        if (deadline > 30){
+            deadline = 30
+        }
+        $("#task_deadline").text(deadline)
+        $("#task_faster").text("")
+        text_last = "Это последний день выполнения!"
+        if ($(day).hasClass("deadline")){
+            for (let k = 0; k < text_last.length; k++) {
+                setTimeout(() => {
+                    $("#task_faster").text($("#task_faster").text()+text_last[k])
+                }, 15*k);
+                
+            }
+        }
     }
 });
 
@@ -124,4 +160,27 @@ async function search_activated() {
         new_element = "<div class='dropdown_field' id='profile_"+i+"'>" + response.data[i].name + "</div>"
         $("#dropdown_list").append(new_element);
     }
+}
+
+function generate_day_info(days_n){
+    console.log(days_n)
+    array = []
+    let i = 0;
+    while (i < days_n) {
+        let newDay = {
+            number: i+1,
+            deadline: Math.min(i+parseInt(Math.floor(Math.random() * 5))+3, days_n)
+        }
+        array.push(newDay)
+        i++
+        for (let k = i; k < newDay.deadline; k++) {
+            newDay_s = {
+                number: k+1,
+                deadline: newDay.deadline
+            }
+            array.push(newDay_s)
+        }
+        i = newDay.deadline
+    }
+    return array
 }
