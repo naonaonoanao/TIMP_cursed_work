@@ -88,33 +88,42 @@ def find_same_users(key):
 
 def find_users_by_name(key):
     data = get_all()
+    names = parse_data(key)
     same_users = []
 
     for user in data:
-        if key.lower() in user[1].lower():
-            same_users.append(user)
+        for name in names:
+            if name.lower() in user[1].lower():
+                same_users.append(user)
+                break
 
     return same_users
 
 
 def find_users_by_email(key):
     data = get_all()
+    emails = parse_data(key)
     same_users = []
 
     for user in data:
-        if key.lower() in user[2].lower():
-            same_users.append(user)
+        for email in emails:
+            if email.lower() in user[2].lower():
+                same_users.append(user)
+                break
 
     return same_users
 
 
 def find_users_by_number(key):
     data = get_all()
+    numbers = parse_data(key)
     same_users = []
 
     for user in data:
-        if key in user[3]:
-            same_users.append(user)
+        for number in numbers:
+            if number.lower() in user[3]:
+                same_users.append(user)
+                break
 
     return same_users
 
@@ -125,13 +134,10 @@ def find_users_by_interests(key):
     interests = parse_data(key)
 
     for user in data:
-        valid = True
         for interest in interests:
-            if interest.lower() not in user[5].lower():
-                valid = False
+            if interest.lower() in user[5].lower():
+                same_users.append(user)
                 break
-        if valid:
-            same_users.append(user)
 
     return same_users
 
@@ -142,23 +148,24 @@ def find_users_by_roles(key):
     roles = parse_data(key)
 
     for user in data:
-        valid = True
         for role in roles:
-            if role.lower() not in user[6].lower():
-                valid = False
+            if role.lower() in user[6].lower():
+                same_users.append(user)
                 break
-        if valid:
-            same_users.append(user)
+
     return same_users
 
 
 def find_users_by_departament(key):
     data = get_all()
+    departaments = parse_data(key)
     same_users = []
 
     for user in data:
-        if key.lower() in user[7].lower():
-            same_users.append(user)
+        for departament in departaments:
+            if departament.lower() in user[7].lower():
+                same_users.append(user)
+                key
 
     return same_users
 
