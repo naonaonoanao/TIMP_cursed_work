@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;900&display=swap');
+
+#map { 
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    height: 90vh;
+    width: 100vw;
+    background-color: #1e1e1e;
+}
+
+.custom-marker-icon {
+    border-radius: 50%;
+}
+
+.custom-cluster-icon {
+    border-radius: 50%;
+    background-color: rgba(194, 235, 235, 0);
+}
+
+.custom-div-icon {
+    white-space: nowrap;
+    z-index: 100000;
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-weight: 700;
+    color: #ba6e4e;
+
+    /* color: #f7edbd57; */
+}
+
+.cityCircle {
+    content: "Mobile";
+}
+
+.circle-tooltip {
+    background-color: #ffffff8a; /* Цвет фона подсказки */
+    border: 1px solid #000; /* Граница подсказки */
+    color: #1e1e1e; /* Цвет текста подсказки */
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-weight: 900;   
+  }
