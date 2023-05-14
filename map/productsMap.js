@@ -631,39 +631,39 @@ export function drawProductsMap() {
 
 
     // Добавляем маркеры в группу кластеров
-    var markerWeb1 = L.marker([51.25 + 5, -0.5 + 10], {
+    var markerWeb1 = L.marker([51.25 + 2, -0.5 + 14], {
         icon: customIcon
     });
-    var markerWeb2 = L.marker([51.4 + 5, -0.63 + 10], {
+    var markerWeb2 = L.marker([51.4 + 2, -0.63 + 14], {
         icon: customIcon
     });
-    var markerWeb3 = L.marker([51.56 + 5, -0.68 + 10], {
+    var markerWeb3 = L.marker([51.56 + 2, -0.68 + 14], {
         icon: customIcon
     });
-    var markerWeb4 = L.marker([51.593 + 5, -0.3 + 10], {
+    var markerWeb4 = L.marker([51.593 + 2, -0.3 + 14], {
         icon: customIcon
     });
-    var markerWeb5 = L.marker([51.95 + 5, -0.34 + 10], {
+    var markerWeb5 = L.marker([51.95 + 2, -0.34 + 14], {
         icon: customIcon
     });
-    var markerWeb6 = L.marker([51.762 + 5, 0.03 + 10], {
+    var markerWeb6 = L.marker([51.762 + 2, 0.03 + 14], {
         icon: customIcon
     });
-    var markerWeb7 = L.marker([51.87 + 5, 0.3 + 10], {
+    var markerWeb7 = L.marker([51.87 + 2, 0.3 + 14], {
         icon: customIcon
     });
-    var markerWeb8 = L.marker([51.7 + 5, 0.4 + 10], {
+    var markerWeb8 = L.marker([51.7 + 2, 0.4 + 14], {
         icon: customIcon
     });
-    var markerWeb9 = L.marker([51.3 + 5, 0.4 + 10], {
+    var markerWeb9 = L.marker([51.3 + 2, 0.4 + 14], {
         icon: customIcon
     });
-    var markerWeb = L.marker([51.2 + 5, -0.06 + 10], {
+    var markerWeb = L.marker([51.2 + 2, -0.06 + 14], {
         icon: customIcon
     });
 
     // Создание круга с центром в координатах [широта, долгота]
-    var circleTeamWeb1 = L.circle([51.51 + 5, 0 + 10], {
+    var circleTeamWeb1 = L.circle([51.51 + 2, 0 + 14], {
         radius: 4000, // радиус круга в метрах
         color: '#e32e56', // цвет границы круга
         fillColor: '#ff335f', // цвет заливки круга
@@ -717,39 +717,39 @@ export function drawProductsMap() {
 
 
     // Добавляем маркеры в группу кластеров
-    var markerWeb10 = L.marker([52.25 + 5, 0.5 + 10], {
+    var markerWeb10 = L.marker([52.25 + 2, 0.5 + 14], {
         icon: customIcon
     });
-    var markerWeb20 = L.marker([52.4 + 5, 1.03 + 10], {
+    var markerWeb20 = L.marker([52.4 + 2, 1.03 + 14], {
         icon: customIcon
     });
-    var markerWeb30 = L.marker([52.56 + 5, 0.68 + 10], {
+    var markerWeb30 = L.marker([52.56 + 2, 0.68 + 14], {
         icon: customIcon
     });
-    var markerWeb40 = L.marker([52.993 + 5, 0.4 + 10], {
+    var markerWeb40 = L.marker([52.993 + 2, 0.4 + 14], {
         icon: customIcon
     });
-    var markerWeb50 = L.marker([52.95 + 5, 0.94 + 10], {
+    var markerWeb50 = L.marker([52.95 + 2, 0.94 + 14], {
         icon: customIcon
     });
-    var markerWeb60 = L.marker([52.762 + 5, 1.03 + 10], {
+    var markerWeb60 = L.marker([52.762 + 2, 1.03 + 14], {
         icon: customIcon
     });
-    var markerWeb70 = L.marker([52.87 + 5, 1.3 + 10], {
+    var markerWeb70 = L.marker([52.87 + 2, 1.3 + 14], {
         icon: customIcon
     });
-    var markerWeb80 = L.marker([52.7 + 5, 1.4 + 10], {
+    var markerWeb80 = L.marker([52.7 + 2, 1.4 + 14], {
         icon: customIcon
     });
-    var markerWeb90 = L.marker([52.3 + 5, 1.4 + 10], {
+    var markerWeb90 = L.marker([52.3 + 2, 1.4 + 14], {
         icon: customIcon
     });
-    var markerWeb0 = L.marker([52.2 + 5, 1.06 + 10], {
+    var markerWeb0 = L.marker([52.2 + 2, 1.06 + 14], {
         icon: customIcon
     });
 
     // Создание круга с центром в координатах [широта, долгота]
-    var circleTeamWeb10 = L.circle([52.51 + 5, 1 + 10], {
+    var circleTeamWeb10 = L.circle([52.51 + 2, 1 + 14], {
         radius: 4000, // радиус круга в метрах
         color: '#e32e56', // цвет границы круга
         fillColor: '#ff335f', // цвет заливки круга
@@ -781,19 +781,19 @@ export function drawProductsMap() {
     map.addLayer(markerClusterGroupWeb0);
 
     // Создаем маркер с DivIcon
-    var textWeb = L.marker([51.35 + 5, -1 + 10], {
+    var textWeb = L.marker([51.35 + 2, -1 + 14], {
         icon: createIconWithText('')
     });
-    var textWeb0 = L.marker([52.35 + 5, 0 + 10], {
+    var textWeb0 = L.marker([52.35 + 2, 0 + 14], {
         icon: createIconWithText('')
     });
-    var textWeb3 = L.marker([49.95 + 5, -1 + 10], {
+    var textWeb3 = L.marker([49.95 + 2, -1 + 14], {
         icon: createIconWithText('')
     });
-    var textWeb4 = L.marker([49.95 + 5, 2 + 10], {
+    var textWeb4 = L.marker([49.95 + 2, 2 + 14], {
         icon: createIconWithText('')
     });
-    var textWeb5 = L.marker([51.55 + 5, 3 + 10], {
+    var textWeb5 = L.marker([51.55 + 2, 3 + 14], {
         icon: createIconWithText('')
     });
 
@@ -857,7 +857,7 @@ export function drawProductsMap() {
 
 
     // Создание круга с центром в координатах [широта, долгота]
-    var cityCircleWeb1 = L.circle([51.51 + 5, 1.5 + 10], {
+    var cityCircleWeb1 = L.circle([51.51 + 2, 1.5 + 14], {
         radius: 25000, // радиус круга в метрах
         color: '#d51e46', // цвет границы круга
         fillColor: '#d51e46', // цвет заливки круга
@@ -905,39 +905,39 @@ export function drawProductsMap() {
 
 
     // Добавляем маркеры в группу кластеров
-    var markerWeb11 = L.marker([50.85 + 5, -0.5 + 10], {
+    var markerWeb11 = L.marker([50.85 + 2, -0.5 + 14], {
         icon: customIcon
     });
-    var markerWeb21 = L.marker([50.0 + 5, -0.63 + 10], {
+    var markerWeb21 = L.marker([50.0 + 2, -0.63 + 14], {
         icon: customIcon
     });
-    var markerWeb31 = L.marker([50.16 + 5, -0.68 + 10], {
+    var markerWeb31 = L.marker([50.16 + 2, -0.68 + 14], {
         icon: customIcon
     });
-    var markerWeb41 = L.marker([50.193 + 5, -0.3 + 10], {
+    var markerWeb41 = L.marker([50.193 + 2, -0.3 + 14], {
         icon: customIcon
     });
-    var markerWeb51 = L.marker([50.55 + 5, -0.34 + 10], {
+    var markerWeb51 = L.marker([50.55 + 2, -0.34 + 14], {
         icon: customIcon
     });
-    var markerWeb61 = L.marker([50.362 + 5, 0.03 + 10], {
+    var markerWeb61 = L.marker([50.362 + 2, 0.03 + 14], {
         icon: customIcon
     });
-    var markerWeb71 = L.marker([50.47 + 5, 0.3 + 10], {
+    var markerWeb71 = L.marker([50.47 + 2, 0.3 + 14], {
         icon: customIcon
     });
-    var markerWeb81 = L.marker([50.3 + 5, 0.4 + 10], {
+    var markerWeb81 = L.marker([50.3 + 2, 0.4 + 14], {
         icon: customIcon
     });
-    var markerWeb91 = L.marker([49.9 + 5, 0.4 + 10], {
+    var markerWeb91 = L.marker([49.9 + 2, 0.4 + 14], {
         icon: customIcon
     });
-    var markerWeb101 = L.marker([49.7 + 5, -0.06 + 10], {
+    var markerWeb101 = L.marker([49.7 + 2, -0.06 + 14], {
         icon: customIcon
     });
 
     // Создание круга с центром в координатах [широта, долгота]
-    var circleTeamWeb11 = L.circle([50.11 + 5, 0 + 10], {
+    var circleTeamWeb11 = L.circle([50.11 + 2, 0 + 14], {
         radius: 4000, // радиус круга в метрах
         color: '#e32e56', // цвет границы круга
         fillColor: '#ff335f', // цвет заливки круга
@@ -1002,39 +1002,39 @@ export function drawProductsMap() {
 
 
     // Добавляем маркеры в группу кластеров
-    var markerWeb12 = L.marker([50.85 + 5, 1.5 + 10], {
+    var markerWeb12 = L.marker([50.85 + 2, 1.5 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb22 = L.marker([50.0 + 5, 2.63 + 10], {
+    var markerWeb22 = L.marker([50.0 + 2, 2.63 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb32 = L.marker([50.16 + 5, 1.68 + 10], {
+    var markerWeb32 = L.marker([50.16 + 2, 1.68 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb42 = L.marker([50.193 + 5, 2.3 + 10], {
+    var markerWeb42 = L.marker([50.193 + 2, 2.3 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb52 = L.marker([50.55 + 5, 1.34 + 10], {
+    var markerWeb52 = L.marker([50.55 + 2, 1.34 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb62 = L.marker([50.362 + 5, 2.03 + 10], {
+    var markerWeb62 = L.marker([50.362 + 2, 2.03 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb72 = L.marker([50.47 + 5, 2.3 + 10], {
+    var markerWeb72 = L.marker([50.47 + 2, 2.3 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb82 = L.marker([50.3 + 5, 2.4 + 10], {
+    var markerWeb82 = L.marker([50.3 + 2, 2.4 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb92 = L.marker([49.9 + 5, 2.4 + 10], {
+    var markerWeb92 = L.marker([49.9 + 2, 2.4 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb202 = L.marker([49.7 + 5, 1.06 + 10], {
+    var markerWeb202 = L.marker([49.7 + 2, 1.06 + 14], {
         icon: newCustomIcon
     });
 
     // Создание круга с центром в координатах [широта, долгота]
-    var circleTeamWeb12 = L.circle([50.11 + 5, 2 + 10], {
+    var circleTeamWeb12 = L.circle([50.11 + 2, 2 + 14], {
         radius: 4000, // радиус круга в метрах
         color: '#e32e56', // цвет границы круга
         fillColor: '#ff335f', // цвет заливки круга
@@ -1105,39 +1105,39 @@ export function drawProductsMap() {
 
 
     // Добавляем маркеры в группу кластеров
-    var markerWeb13 = L.marker([52.85 + 5, 3.5 + 10], {
+    var markerWeb13 = L.marker([52.85 + 2, 3.5 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb23 = L.marker([52.0 + 5, 4.93 + 10], {
+    var markerWeb23 = L.marker([52.0 + 2, 4.93 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb33 = L.marker([52.16 + 5, 4.38 + 10], {
+    var markerWeb33 = L.marker([52.16 + 2, 4.38 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb43 = L.marker([52.193 + 5, 3.3 + 10], {
+    var markerWeb43 = L.marker([52.193 + 2, 3.3 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb53 = L.marker([52.55 + 5, 3.84 + 10], {
+    var markerWeb53 = L.marker([52.55 + 2, 3.84 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb63 = L.marker([52.362 + 5, 4.53 + 10], {
+    var markerWeb63 = L.marker([52.362 + 2, 4.53 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb73 = L.marker([52.47 + 5, 3.3 + 10], {
+    var markerWeb73 = L.marker([52.47 + 2, 3.3 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb83 = L.marker([51.7 + 5, 4.4 + 10], {
+    var markerWeb83 = L.marker([51.7 + 2, 4.4 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb93 = L.marker([51.9 + 5, 3 + 10], {
+    var markerWeb93 = L.marker([51.9 + 2, 3 + 14], {
         icon: newCustomIcon
     });
-    var markerWeb303 = L.marker([51.7 + 5, 3.56 + 10], {
+    var markerWeb303 = L.marker([51.7 + 2, 3.56 + 14], {
         icon: newCustomIcon
     });
 
     // Создание круга с центром в координатах [широта, долгота]
-    var circleTeamWeb13 = L.circle([52.11 + 5, 4 + 10], {
+    var circleTeamWeb13 = L.circle([52.11 + 2, 4 + 14], {
         radius: 4000, // радиус круга в метрах
         color: '#e32e56', // цвет границы круга
         fillColor: '#ff335f', // цвет заливки круга

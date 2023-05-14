@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;900&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
-*{
+
+/* * {
     font-family: 'Comfortaa';
-    color: rgb(247,237,189);
+    color: rgb(247, 237, 189);
+} */
+
+#header {
+    font-family: 'Comfortaa';
+    color: rgb(247, 237, 189);
 }
-#map { 
+
+#map {
     position: fixed;
     top: 10vh;
     left: 0;
@@ -29,7 +36,6 @@
     font-size: 15px;
     font-weight: 700;
     color: #ba6e4e;
-
     /* color: #f7edbd57; */
 }
 
@@ -38,15 +44,18 @@
 }
 
 .circle-tooltip {
-    background-color: #ffffff8a; /* Цвет фона подсказки */
-    border: 1px solid #000; /* Граница подсказки */
-    color: #1e1e1e; /* Цвет текста подсказки */
+    background-color: #ffffff8a;
+    /* Цвет фона подсказки */
+    border: 1px solid #000;
+    /* Граница подсказки */
+    color: #1e1e1e;
+    /* Цвет текста подсказки */
     font-family: "Montserrat";
     font-size: 15px;
-    font-weight: 900;   
+    font-weight: 900;
 }
 
-#map_changer{
+#map_changer {
     display: block;
     position: absolute;
     right: 2vh;
@@ -63,7 +72,7 @@
     background-color: rgb(30, 30, 30);
 }
 
-.inText{
+.inText {
     display: inline-block;
     width: 22vw;
     margin-bottom: 2vh;
@@ -74,7 +83,8 @@
     padding-bottom: 0.5vh;
     text-align: center;
 }
-.inText:hover{
+
+.inText:hover {
     display: inline-block;
     margin-bottom: 2vh;
     background-color: rgb(60, 60, 60);

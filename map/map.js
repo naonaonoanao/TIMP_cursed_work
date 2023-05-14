@@ -17,7 +17,7 @@ drawDepartamentMap();
 
 function createMap() {
     // Создаем карту Leaflet
-    var map = L.map('map').setView([51.505, -0.09], 4);
+    var map = L.map('map').setView([51.505, 7], 4);
 
     map.setMinZoom(4);
     map.setMaxZoom(13);
