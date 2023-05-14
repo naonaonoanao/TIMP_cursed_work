@@ -197,6 +197,11 @@ def generate_random_users(count):
         add_new_member(name, email, number, photo, roles, interests, departament)
 
 
+def generate_random_text():
+    fake = Faker()
+    return fake.text()
+
+
 if __name__ == "__main__":
     try:
         sqlite_connection = sqlite3.connect('sqlite_python.db')

@@ -3,6 +3,8 @@ from flask_cors import CORS
 from db import get_all, find_same_users, add_new_member, delete_all, string_to_map
 from db import find_users_by_name, find_users_by_roles, find_users_by_departament, find_users_by_number
 from db import find_users_by_email, find_users_by_interests
+from db import generate_random_text
+
 
 app = Flask(__name__)
 CORS(app)
@@ -106,6 +108,11 @@ def add_new_user():
 def delete_all_users():
     delete_all()
     return "OK"
+
+
+@app.route('/generate_text', methods=["get"])
+def get_text():
+    return generate_random_text()
 
 
 if __name__ == '__main__':
