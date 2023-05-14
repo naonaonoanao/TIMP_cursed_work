@@ -80,6 +80,7 @@
     padding: 1vh;
     margin: 1vh;
     transition: 0.5s;
+    font-size: 4vh;
 }
 .inBlock:hover{
     display: inline-flex;

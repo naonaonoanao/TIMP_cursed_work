@@ -1,5 +1,6 @@
 import { map } from "./map.js";
 
+
 export function drawSubordinationMap(){
     // Удаление всех маркеров с карты
 map.eachLayer(function (layer) {
@@ -537,18 +538,6 @@ map.addLayer(markerClusterGroup3);
 
 var polylineCityTeam = L.polyline([cityCircle1.getLatLng(), circleTeam1.getLatLng(), cityCircle1.getLatLng(), circleTeam10.getLatLng(), cityCircle1.getLatLng(), circleTeam11.getLatLng(), cityCircle1.getLatLng(),  circleTeam12.getLatLng(), cityCircle1.getLatLng(),  circleTeam13.getLatLng(), cityCircle1.getLatLng()], { color: '#dda187', weight: 7 }).addTo(map);
 polylineCityTeam.bringToBack();
-
-document.addEventListener("click", function (e) {
-    if ($(e.target).hasClass("custom-cluster-icon")){
-        console.log('Нажатие на иконку:', e.target);
-    } else if ($(e.target).hasClass("teamCircle")) {
-        console.log('Нажатие на иконку:', e.target);
-
-    } else if ($(e.target).hasClass("cityCircle")) {
-        console.log('Нажатие на иконку:', e.target);
-
-    }
-})
 
 
 
