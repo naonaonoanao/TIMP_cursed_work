@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shared_styles.css">
     <title>Blank</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="script.js"></script>
-    
 </head>
 <body>
     <div id="container">
@@ -31,7 +31,12 @@
                     что такое индекс
                 </div>
             </div>
-            <div id="calendar" class="pageBlock"></div>
+            <div id="calendar" class="pageBlock">
+                <div id="month_name">Июнь</div>
+                <div id="previous_month" class="btn_month"><</div>
+                <div id="next_month" class="btn_month">></div>
+                <div id="cal_days"></div>
+            </div>
             <div id="tasks" class="pageBlock">
                 <div id="task_day">22</div>
                 <div id="task_name">Наименование</div>
@@ -48,8 +53,8 @@
         <div id="header">
             <div id="logo_main" class="logo"></div>
             <div id="blocksHeader">
-                <div class="inBlock">Личный кабинет</div>
-                <div class="inBlock">Расширенный поиск</div>
+                <div class="inBlock" id="toMyCab">Личный кабинет</div>
+                <div class="inBlock" id="toExpandedSearch">Расширенный поиск</div>
             </div>
             <div id="form_search">
                 <input type="text" name="fast-search" id="fast_search">
