@@ -159,10 +159,11 @@ async function getDepartaments() {
     let response = await request.json();
     for (let i = 0; i < response.count; i++) {
         newCheckPar = response.data[i].departament.split(", ")
+        console.log(newCheckPar)
         for (let n = 0; n < newCheckPar.length; n++) {
-            if (departament.has(newCheckPar[n].toLowerCase()) == false){
-                departament.add(newCheckPar[n].toLowerCase());
-                newCheck = "<div class='check'>" + newCheckPar[n].toLowerCase() + "</div>"
+            if (departaments.has(newCheckPar[n]) == false){
+                departaments.add(newCheckPar[n]);
+                newCheck = "<div class='check'>" + newCheckPar[n] + "</div>"
                 $("#departament_check").append(newCheck);
             }
         }
