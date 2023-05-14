@@ -1,10 +1,17 @@
 import { drawProductsMap } from "./productsMap.js";
 import {drawDepartamentMap} from './departmentMap.js'
 import {drawSubordinationMap} from './subordinationMap.js'
-// Создаем карту Leaflet
-export var map = L.map('map').setView([51.505, -0.09], 4);
+
+
 
 let changer_expand = false;
+
+export var map = createMap();
+drawDepartamentMap();
+
+function createMap() {
+    // Создаем карту Leaflet
+ var map = L.map('map').setView([51.505, -0.09], 4);
 
 map.setMinZoom(4);
 map.setMaxZoom(13);
@@ -13,10 +20,9 @@ map.setMaxZoom(13);
 var emptyLayer = L.tileLayer('', {
     attribution: 'Empty Map'
 }).addTo(map);
-
-drawSubordinationMap()
-
 $(document.getElementsByClassName("leaflet-control-attribution leaflet-control")).remove();
+  return map
+}
 
 document.addEventListener("click", function (e) {
     console.log(e);
@@ -49,12 +55,19 @@ document.addEventListener("click", function (e) {
         }
 
         if ($(el).attr("id") == "departaments") {
+            map.remove()
+            map = createMap();
             drawDepartamentMap();
         }
         else if ($(el).attr("id") == "products") {
+            map.remove()
+            map = createMap();
             drawProductsMap();
         }
         else if ($(el).attr("id") == "children") {
+            console.log('asajs')
+            map.remove()
+            map = createMap();
             drawSubordinationMap();
         }
     }
