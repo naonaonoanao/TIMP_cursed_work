@@ -277,10 +277,12 @@ function createText(person, element) {
 function search_activated() {
     new_tag_value = $("#fast_search").val();
     $("#fast_search").val("");
-    newtag = "<div class='search_tag' id='names'>" + new_tag_value + "</div>";
-    search_parameter = new_tag_value+"_names";
-    if (searching.has(search_parameter) == false){
-        $("#searching_field").append(newtag);
-        searching.add(search_parameter);
+    if (new_tag_value != ""){
+        newtag = "<div class='search_tag' id='names'>" + new_tag_value + "</div>";
+        search_parameter = new_tag_value+"_names";
+        if (searching.has(search_parameter) == false){
+            $("#searching_field").append(newtag);
+            searching.add(search_parameter);
+        }
     }
 }
