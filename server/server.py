@@ -112,7 +112,9 @@ def delete_all_users():
 
 @app.route('/generate_text', methods=["get"])
 def get_text():
-    return generate_random_text()
+    return {
+        "text": generate_random_text()
+    }
 
 
 if __name__ == '__main__':

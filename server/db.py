@@ -199,7 +199,7 @@ def generate_random_users(count):
 
 def generate_random_text():
     fake = Faker()
-    return {"text": fake.text()}
+    return fake.text()
 
 
 if __name__ == "__main__":
