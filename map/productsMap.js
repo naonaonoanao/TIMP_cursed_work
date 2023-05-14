@@ -8,6 +8,13 @@ map.eachLayer(function (layer) {
     }
   });
   
+// Удаление всех маркеров с карты
+map.eachLayer(function (layer) {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
+  
   // Удаление всех полигонов с карты
   map.eachLayer(function (layer) {
     if (layer instanceof L.Polygon) {

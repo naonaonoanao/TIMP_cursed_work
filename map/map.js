@@ -4,7 +4,7 @@ import {drawSubordinationMap} from './subordinationMap.js'
 // Создаем карту Leaflet
 export var map = L.map('map').setView([51.505, -0.09], 4);
 
-changer_expand = false
+let changer_expand = false;
 
 map.setMinZoom(4);
 map.setMaxZoom(13);
@@ -16,22 +16,9 @@ var emptyLayer = L.tileLayer('', {
 
 drawSubordinationMap()
 
-$(document).ready(function () {
-    $(".inText").click(function () {
-        console.log("iii")
-        if (changer_expand) {
-            changer_expand = false;
-        }
-        else{
-            changer_expand = true;
-            $("#map_changer").css("height", "20vh")
-        }
-    });
-});
-
 $(document.getElementsByClassName("leaflet-control-attribution leaflet-control")).remove();
 
-window.addEventListener("click", function (e) {
+document.addEventListener("click", function (e) {
     console.log(e);
     if ($(e.target).hasClass("custom-cluster-icon")){
         console.log('Нажатие на иконку:', e.target);
@@ -41,9 +28,35 @@ window.addEventListener("click", function (e) {
     } else if ($(e.target).hasClass("cityCircle")) {
         console.log('Нажатие на иконку:', e.target);
     }
-    el = e.target;
+    let el = e.target;
     if ($(el).attr("id") == "toMyCab"){
         console.log("ggg");
         window.location.href = "../index.html";
     }
+    if ($(el).hasClass("inText")){
+        console.log(changer_expand);
+        if (changer_expand) {
+            changer_expand = false;
+            $("#map_changer").css({
+                "height": "7vh"
+            })
+        }
+        else{
+            changer_expand = true;
+            $("#map_changer").css({
+                "height": "30vh"
+            })
+        }
+
+        if ($(el).attr("id") == "departaments") {
+            drawDepartamentMap();
+        }
+        else if ($(el).attr("id") == "products") {
+            drawProductsMap();
+        }
+        else if ($(el).attr("id") == "children") {
+            drawSubordinationMap();
+        }
+    }
+        
 });
