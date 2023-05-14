@@ -2,6 +2,7 @@ current_month = 5 //брать из бд
 months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
 month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 last_response = null
+global_days_info = []
 
 $(document).ready(function() {
     prof_element = $("#profile");
@@ -86,11 +87,7 @@ document.addEventListener("click", async function(e) {
         //взять из бд
         $("#task_day").text(normalize_data(id));
         $("#task_name").text("имя таска на день: " + id);
-        requestIng = "http://127.0.0.1:5000/generate_text";
-        let request = await fetch(requestIng);
-        let response = await request.json();
-        task_text = response.text;
-        $("#task_description").text(task_text);
+        $("#task_description").text(global_days_info[id - 1].task);
         $("#task_deadline").text(deadline);
         $("#task_faster").text("");
         text_last = "Это последний день выполнения!";
@@ -141,37 +138,46 @@ async function search_activated() {
 }
 
 function generate_day_info(days_n) {
-    console.log(days_n)
-    array = []
+
+    return array
+}
+
+async function days_view() {
+    $("#cal_days").empty();
+    $("#month_name").text(months[current_month])
+
+    global_days_info = [];
+    days_n = month_days[current_month];
     let i = 0;
     while (i < days_n) {
+        requestIng = "http://127.0.0.1:5000/generate_text";
+        let request = await fetch(requestIng);
+        let response = await request.json();
+        let task_text = response.text;
         let newDay = {
             number: i + 1,
-            deadline: Math.min(i + parseInt(Math.floor(Math.random() * 5)) + 3, days_n)
+            deadline: Math.min(i + parseInt(Math.floor(Math.random() * 5)) + 3, days_n),
+            task: task_text
         }
-        array.push(newDay)
+        global_days_info.push(newDay)
         i++
         for (let k = i; k < newDay.deadline; k++) {
             newDay_s = {
                 number: k + 1,
-                deadline: newDay.deadline
+                deadline: newDay.deadline,
+                task: task_text
             }
-            array.push(newDay_s)
+            global_days_info.push(newDay_s)
         }
         i = newDay.deadline
     }
-    return array
-}
 
-function days_view() {
-    $("#cal_days").empty();
-    $("#month_name").text(months[current_month])
-    days_info = generate_day_info(month_days[current_month]) //надо брать из бд
-    for (let i = 0; i < days_info.length; i++) {
-        new_day = "<div class='day' id='day_" + days_info[i].number + "_" + days_info[i].deadline + "'>" + days_info[i].number + "</div>"
+    console.log(global_days_info)
+    for (let i = 0; i < global_days_info.length; i++) {
+        new_day = "<div class='day' id='day_" + global_days_info[i].number + "_" + global_days_info[i].deadline + "'>" + global_days_info[i].number + "</div>"
 
         $("#cal_days").append(new_day);
-        if (days_info[i].deadline == days_info[i].number) {
+        if (global_days_info[i].deadline == global_days_info[i].number) {
             $($(".day")[$(".day").length - 1]).addClass("deadline");
         }
     }
