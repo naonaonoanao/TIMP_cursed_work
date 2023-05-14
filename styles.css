@@ -145,7 +145,7 @@
 #task_day{
     position: absolute;
     top: 4vh;
-    left: 2vw;
+    left: 1vw;
     width: 2.45vw;
     height: 4vh;
     font-size: 4vh;
@@ -154,7 +154,7 @@
 #task_name{
     position: absolute;
     top: 4vh;
-    left: 6.45vw;
+    left: 7.45vw;
     height: 4vh;
     font-size: 4vh;
     text-align: center;
